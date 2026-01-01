@@ -1,6 +1,6 @@
 {
   "builds": [
-    { "src": "dist/SkillFusion/**", "use": "@vercel/static" }
+    { "src": "dist/your-project-name/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
