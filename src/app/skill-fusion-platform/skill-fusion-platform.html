@@ -1,0 +1,386 @@
+<!-- Onboarding Overlay -->
+<div class="onboarding-overlay" *ngIf="showOnboarding">
+  <div class="onboarding-container">
+    <div class="onboarding-header">
+      <div class="logo">
+        <i class="fas fa-code-branch"></i>
+        <span>Skill Fusion</span>
+      </div>
+      <button class="skip-btn" (click)="skipOnboarding()">Skip →</button>
+    </div>
+    
+    <div class="onboarding-content">
+      <div class="progress-indicator">
+        <div class="step" *ngFor="let step of onboardingSteps; let i = index" 
+             [class.active]="i === currentStep"
+             [class.completed]="i < currentStep">
+          <div class="step-circle">{{i + 1}}</div>
+        </div>
+      </div>
+      
+      <div class="step-content">
+        <h2>{{getCurrentStep().question}}</h2>
+        <p class="step-subtitle" *ngIf="getCurrentStep().type === 'skills'">
+          Select skills you're interested in learning
+        </p>
+        <p class="step-subtitle" *ngIf="getCurrentStep().type === 'teach'">
+          What knowledge can you share with others?
+        </p>
+        <p class="step-subtitle" *ngIf="getCurrentStep().type === 'preference'">
+          Choose your preferred learning style
+        </p>
+        
+        <div class="options-grid">
+          <div class="option-card" 
+               *ngFor="let option of getCurrentStep().options"
+               [class.selected]="isOptionSelected(currentStep, option.id)"
+               (click)="selectOption(currentStep, option.id)">
+            <div class="option-icon" [style.background]="option.color + '20'">
+              <i class="fas fa-{{option.icon}}" [style.color]="option.color"></i>
+            </div>
+            <span class="option-name">{{option.name}}</span>
+          </div>
+        </div>
+        
+        <div class="step-actions">
+          <button class="btn-secondary" (click)="prevStep()" *ngIf="currentStep > 0">
+            ← Back
+          </button>
+          <button class="btn-primary" (click)="nextStep()">
+            {{currentStep === onboardingSteps.length - 1 ? 'Get Started' : 'Continue →'}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main App UI -->
+<div class="skill-fusion-app" *ngIf="!showOnboarding">
+  <!-- Top Navigation -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <div class="logo">
+        <i class="fas fa-code-branch"></i>
+        <span>Skill Fusion</span>
+      </div>
+      
+      <div class="nav-links">
+        <a href="#" class="nav-link active">
+          <span>Home</span>
+        </a>
+     
+      </div>
+    </div>
+    
+    <div class="nav-right">
+      <div class="skill-credits">
+        <i class="fas fa-coins"></i>
+        <span>{{skillCredits}}</span>
+      </div>
+      
+      <div class="user-menu">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-info">
+          <span class="user-name">You</span>
+          <span class="user-level">Skill Level: Intermediate</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Your Skills</h3>
+        <div class="skill-progress-list">
+          <div class="skill-progress-item" *ngFor="let skill of userSkills">
+            <div class="skill-header">
+              <div class="skill-icon" [style.background]="skill.color + '20'">
+                <i class="fas fa-{{skill.icon}}" [style.color]="skill.color"></i>
+              </div>
+              <div class="skill-info">
+                <span class="skill-name">{{skill.name}}</span>
+                <span class="skill-level">Level {{skill.level}}%</span>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width]="skill.level + '%'" [style.background]="skill.color"></div>
+            </div>
+            <div class="skill-proofs">
+              <i class="fas fa-check-circle"></i>
+              {{skill.proofs}} proofs
+            </div>
+          </div>
+        </div>
+        <button class="sidebar-btn">
+          <i class="fas fa-plus"></i>
+          Add Skill
+        </button>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Quick Actions</h3>
+        <div class="quick-actions">
+          <button class="action-btn">
+            <i class="fas fa-microphone"></i>
+            Start Teaching
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-search"></i>
+            Find Practice Room
+          </button>
+          <button class="action-btn">
+            <i class="fas fa-tasks"></i>
+            View Challenges
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Content -->
+    <div class="content-center">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <h1 class="hero-title">Practice Real Skills Together. <span class="highlight">Not Alone.</span></h1>
+        <p class="hero-subtitle">Join live practice rooms, collaborate on challenges, and grow your skills through community-driven learning.</p>
+        
+        <div class="hero-search">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search for skills, rooms, or challenges...">
+          </div>
+          <button class="btn-primary">
+            <i class="fas fa-bolt"></i>
+            Quick Practice
+          </button>
+        </div>
+      </section>
+
+      <!-- Live Practice Rooms -->
+      <section class="rooms-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-broadcast-tower"></i>
+            Live Now
+          </h2>
+          <a href="#" class="see-all">See All →</a>
+        </div>
+        
+        <div class="rooms-grid">
+          <div class="room-card" *ngFor="let room of practiceRooms">
+            <div class="room-header">
+              <span class="room-type" [style.background]="room.color">{{room.type}}</span>
+              <div class="room-meta">
+                <span class="room-level">{{room.level}}</span>
+                <span class="room-duration">{{room.duration}}</span>
+              </div>
+            </div>
+            
+            <h3 class="room-title">{{room.title}}</h3>
+            <p class="room-skill">{{room.skill}}</p>
+            
+            <div class="room-participants">
+              <div class="participant-avatars">
+                <div class="participant-avatar" *ngFor="let i of [1,2,3,4]">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="participant-count">+{{room.participants - 4}}</div>
+              </div>
+              <span class="participant-info">{{room.participants}} / {{room.maxParticipants}} joined</span>
+            </div>
+            
+            <div class="room-features">
+              <span class="feature-tag" *ngFor="let feature of room.features">{{feature}}</span>
+            </div>
+            
+            <button class="btn-join" [style.background]="room.color" (click)="joinRoom(room.id)">
+              <i class="fas fa-door-open"></i>
+              Join Room
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skill Page Section -->
+      <section class="skill-page-section">
+        <div class="skill-banner" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6)">
+          <div class="skill-banner-content">
+            <h1 class="skill-title">{{activeSkillPage}}</h1>
+            <p class="skill-description">Build interactive websites and web applications. From HTML/CSS basics to full-stack development.</p>
+            <div class="skill-stats">
+              <div class="stat">
+                <span class="stat-value">1,248</span>
+                <span class="stat-label">Active Practitioners</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">356</span>
+                <span class="stat-label">Practice Rooms</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">89</span>
+                <span class="stat-label">Teaching Sessions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-tabs">
+          <button class="skill-tab" 
+                  *ngFor="let tab of skillTabs"
+                  [class.active]="activeTab === tab"
+                  (click)="setActiveTab(tab)">
+            {{tab}}
+          </button>
+        </div>
+        
+        <div class="skill-tab-content" *ngIf="activeTab === 'Overview'">
+          <div class="overview-grid">
+            <div class="progress-card">
+              <h3>Your Progress</h3>
+              <div class="progress-ring">
+                <div class="ring" style="--progress: 72">
+                  <span>72%</span>
+                </div>
+              </div>
+              <p class="next-milestone">Next: {{getProgressData().nextMilestone}}</p>
+            </div>
+            
+            <div class="roadmap-card">
+              <h3>Skill Roadmap</h3>
+              <div class="roadmap">
+                <div class="roadmap-level" *ngFor="let level of getProgressData().roadmap" [class.current]="level.current">
+                  <div class="level-header">
+                    <i class="fas fa-flag" *ngIf="level.current"></i>
+                    <span class="level-name">{{level.level}}</span>
+                  </div>
+                  <ul class="level-tasks">
+                    <li *ngFor="let task of level.tasks">{{task}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="proof-card">
+              <h3>Proof of Skill</h3>
+              <div class="proof-badge">
+                <div class="badge-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div class="badge-content">
+                  <span class="badge-title">Web Development</span>
+                  <span class="badge-progress">72% validated</span>
+                </div>
+              </div>
+              <div class="proof-list">
+                <div class="proof-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Built 3 real projects</span>
+                </div>
+                <div class="proof-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Helped 5 learners</span>
+                </div>
+                <div class="proof-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Passed 2 community reviews</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-tab-content" *ngIf="activeTab === 'Practice'">
+          <div class="practice-rooms">
+            <!-- Practice rooms would be filtered by skill here -->
+            <div class="empty-state">
+              <i class="fas fa-laptop-code"></i>
+              <h3>Practice Rooms for {{activeSkillPage}}</h3>
+              <p>Join a live practice session or start your own</p>
+              <button class="btn-primary">Start Practice Session</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Community Feed</h3>
+        <div class="community-feed">
+          <div class="feed-item" *ngFor="let item of communityFeed">
+            <div class="feed-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="feed-content">
+              <p>
+                <strong>{{item.user}}</strong> {{item.action}} 
+                <strong>{{item.target}}</strong> in {{item.skill}}
+              </p>
+              <span class="feed-time">{{item.time}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Active Challenges</h3>
+        <div class="challenges-list">
+          <div class="challenge-card" *ngFor="let challenge of challenges">
+            <div class="challenge-header" [style.background]="challenge.color">
+              <span class="challenge-badge">⚔ CHALLENGE</span>
+            </div>
+            <div class="challenge-content">
+              <h4>{{challenge.title}}</h4>
+              <p>{{challenge.description}}</p>
+              <div class="challenge-meta">
+                <div class="meta-item">
+                  <i class="fas fa-users"></i>
+                  {{challenge.participants}}
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  {{challenge.duration}}
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-hourglass-end"></i>
+                  {{challenge.endsIn}}
+                </div>
+              </div>
+              <button class="btn-challenge">Join Challenge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="micro-teaching">
+        <h3 class="sidebar-title">Teach for 15 mins</h3>
+        <div class="teaching-form">
+          <input type="text" placeholder="What can you help with?">
+          <select>
+            <option>15 minutes</option>
+            <option>30 minutes</option>
+            <option>60 minutes</option>
+          </select>
+          <select>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+          <button class="btn-primary">
+            <i class="fas fa-microphone"></i>
+            Start Teaching
+          </button>
+        </div>
+        <p class="teaching-note">Earn Skill Credits by helping others</p>
+      </div>
+    </aside>
+  </main>
+</div>
+

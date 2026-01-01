@@ -1,0 +1,39 @@
+<div class="login-container">
+
+  <!-- Logo + Title -->
+  <div class="login-header">
+    <img src="/skillfusion.png" alt="App Logo" class="logo">
+    <h1 class="app-title">Skill Fusion</h1>
+    <p class="subtitle">Sign in to your account</p>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="Enter your email">
+      <small *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+        Valid email is required
+      </small>
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="Enter your password">
+      <small *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        Password must be at least 6 characters
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Signing in...' : 'Sign In' }}
+    </button>
+
+    <p class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
+
+  </form>
+</div>
+
+

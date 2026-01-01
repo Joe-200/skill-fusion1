@@ -1,0 +1,315 @@
+ <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <img src="/skillfusion.png" class="nav-logo" />
+            <span class="brand">Skill Fusion</span>
+        </div>
+
+        <ul class="nav-links">
+            <li (click)="scrollTo('home')">Home</li>
+            <li (click)="scrollTo('about')">About</li>
+            <li (click)="scrollTo('features')">Features</li>
+            <li (click)="scrollTo('how')">How It Works</li>
+            <li (click)="scrollTo('testimonials')">Testimonials</li>
+            <li (click)="scrollTo('community')">Community</li>
+        </ul>
+
+        <button class="join-btn">Join Now</button>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="section hero">
+        <div class="hero-content">
+            <h1>Teach What You Know.<br>Learn What You Don't.</h1>
+            <p>
+                Skill Fusion is a collaborative learning platform where people exchange
+                real skills through practice, teaching, and community-driven growth.
+                Join thousands of learners and teachers in our vibrant skill-sharing community.
+            </p>
+            <div class="hero-actions">
+                <button routerLink="/SkillFusionPlatform" class="primary">Get Started Free</button>
+                <button class="secondary">Explore Skills</button>
+            </div>
+            
+            <div class="skills-showcase">
+                <div class="skill-tag">Web Development</div>
+                <div class="skill-tag">Graphic Design</div>
+                <div class="skill-tag">Photography</div>
+                <div class="skill-tag">Cooking</div>
+                <div class="skill-tag">Music</div>
+                <div class="skill-tag">Languages</div>
+                <div class="skill-tag">Business</div>
+                <div class="skill-tag">Fitness</div>
+            </div>
+        </div>
+        
+        <div class="hero-image">
+           <div class="hero-img-placeholder">
+    <i class="fas fa-users"></i>
+</div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2 class="section-title">Why Skill Fusion?</h2>
+        <p class="section-desc">
+            Traditional learning is passive. Skill Fusion flips the model.
+            You learn faster by teaching, practicing, and collaborating. 
+            Our platform connects knowledge seekers with knowledge holders 
+            in a mutually beneficial exchange.
+        </p>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Active Learning</h3>
+                <p>Learning by doing, not watching. Engage in hands-on practice sessions, real-time feedback, and collaborative projects that solidify skills.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Skill Exchange</h3>
+                <p>No money required — value is knowledge. Trade your expertise for new skills in a barter-based ecosystem that values what you know.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h3>Human-Centered</h3>
+                <p>Built around people, not algorithms. Connect with real mentors and learners who share your passion for growth and collaboration.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Rapid Growth</h3>
+                <p>Accelerate your learning curve. Teaching reinforces your own knowledge while learning from peers provides fresh perspectives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section alt">
+        <h2 class="section-title">Core Features</h2>
+        <p class="section-desc">
+            Discover the tools and features designed to facilitate effective skill exchange 
+            and collaborative learning experiences.
+        </p>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Teach & Learn</h3>
+                <p>Offer a skill and receive another in return. Create detailed skill profiles and find perfect matches for exchange.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Real Practice</h3>
+                <p>Hands-on sessions, not passive videos. Interactive workshops, live practice, and project-based learning.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Peer Matching</h3>
+                <p>Find people with complementary skills. Our smart algorithm connects you with ideal learning partners.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your skill development journey with detailed progress reports and milestone achievements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">
+            Getting started with Skill Fusion is simple. Follow these four steps to begin 
+            your journey of collaborative learning and skill exchange.
+        </p>
+
+        <div class="steps">
+            <div class="step">
+                <span>1</span>
+                <p>Create a profile and list your skills</p>
+            </div>
+            <div class="step">
+                <span>2</span>
+                <p>Match with learners and teachers</p>
+            </div>
+            <div class="step">
+                <span>3</span>
+                <p>Exchange knowledge through sessions</p>
+            </div>
+            <div class="step">
+                <span>4</span>
+                <p>Grow through collaboration</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section alt">
+        <h2 class="section-title">Success Stories</h2>
+        <p class="section-desc">
+            Hear from members who have transformed their skills and careers through 
+            collaborative learning on Skill Fusion.
+        </p>
+
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "I taught web development while learning graphic design. Within 3 months, I launched my own freelance business with both skills!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JS</div>
+                    <div class="author-info">
+                        <h4>Jamie Sullivan</h4>
+                        <p>Freelance Designer & Developer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "As a language teacher, I exchanged Spanish lessons for coding skills. Now I'm building my own language learning app!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MR</div>
+                    <div class="author-info">
+                        <h4>Maria Rodriguez</h4>
+                        <p>Language Teacher & App Developer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "The collaborative learning approach helped me learn photography while teaching marketing. My Instagram following grew by 500%!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">TC</div>
+                    <div class="author-info">
+                        <h4>Tom Chen</h4>
+                        <p>Marketing Consultant & Photographer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="community" class="section">
+        <h2 class="section-title">Community Driven</h2>
+        <p class="section-desc">
+            Skill Fusion thrives on shared curiosity, mutual respect,
+            and collective progress. Join our vibrant community today.
+        </p>
+
+        <div class="community-content">
+            <div class="community-text">
+                <h3>Join Thousands of Skill Sharers</h3>
+                <p>Our community is growing every day with passionate learners and teachers from all around the world. Whether you're looking to acquire new skills or share your expertise, you'll find your place here.</p>
+                
+                <div class="community-stats">
+                    <div class="stat">
+                        <div class="stat-number">15K+</div>
+                        <div class="stat-label">Active Members</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Skills Taught</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5K+</div>
+                        <div class="stat-label">Exchanges Made</div>
+                    </div>
+                </div>
+                
+                <button class="primary" style="margin-top: 30px;">Join the Community</button>
+            </div>
+            
+            <div class="community-image">
+                <div class="community-img-placeholder">
+                    <i class="fas fa-globe-americas"></i>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="/skillfusion.png" />
+                    <span>Skill Fusion</span>
+                </div>
+                <p class="footer-desc">
+                    A collaborative learning platform where people exchange real skills through practice, teaching, and community-driven growth.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                    <li><a href="#how"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                    <li><a href="#community"><i class="fas fa-chevron-right"></i> Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Popular Skills</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-code"></i> Web Development</a></li>
+                    <li><a href="#"><i class="fas fa-paint-brush"></i> Graphic Design</a></li>
+                    <li><a href="#"><i class="fas fa-camera"></i> Photography</a></li>
+                    <li><a href="#"><i class="fas fa-language"></i> Language Learning</a></li>
+                    <li><a href="#"><i class="fas fa-utensils"></i> Cooking & Baking</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-envelope"></i> hello@skillfusion.com</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Learning St, Education City</a></li>
+                </ul>
+                <div style="margin-top: 25px;">
+                    <button class="primary" style="width: 100%;">Join Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Skill Fusion. All rights reserved. | <a href="#" style="color: #60a5fa;">Privacy Policy</a> | <a href="#" style="color: #60a5fa;">Terms of Service</a></p>
+        </div>
+    </footer>
